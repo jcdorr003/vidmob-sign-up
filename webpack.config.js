@@ -17,11 +17,6 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-        exclude: /\.module\.css$/
-      },
-      {
-        test: /\.css$/,
         use: [
           "style-loader",
           {
@@ -31,8 +26,15 @@ const config = {
               modules: true
             }
           }
-        ],
-        include: /\.module\.css$/
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader"
+          }
+        ]
       }
     ]
   },
