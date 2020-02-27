@@ -1,5 +1,20 @@
+@font-face {
+  font-family: "ProximaNova";
+  src: url("./fonts/proximanova-regular.woff") format("woff"),
+    url("./fonts/proximanova-regular.woff2") format("woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "ProximaNova";
+  src: url("./fonts/proximanova-bold.woff") format("woff"),
+    url("./fonts/proximanova-bold.woff2") format("woff2");
+  font-weight: bold;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "ProximaNova";
 }

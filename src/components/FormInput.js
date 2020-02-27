@@ -15,6 +15,8 @@ const FormInput = props => {
         value={inputValue}
         name="input-form"
         onChange={handleChange}
+        className={props.className}
+        placeholder={props.placeholder}
       />
     </>
   );

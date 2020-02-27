@@ -9,10 +9,17 @@ const DefaultView = () => {
     <div className={styles.container}>
       <form>
         <ConfirmEmailModal />
-        <div>Get started on VidMob</div>
-        <div>Enter your work email.</div>
-        <FormInput />
-        <Button>NEXT</Button>
+        <div className={styles.getStarted}>Get started on VidMob</div>
+        <div className={styles.workEmail}>Enter your work email.</div>
+        <div className={styles.line} />
+        <div className={styles.email_input_container}>
+          <FormInput
+            type={"email"}
+            placeholder={"name@company.com"}
+            className={styles.email_input}
+          />
+        </div>
+        <Button className={styles.defaultViewBtn}>NEXT</Button>
       </form>
     </div>
   );
