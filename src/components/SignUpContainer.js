@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import LogoImg from "../images/vm-logo-primary.png";
 import LogoImg2x from "../images/vm-logo-primary@2x.png";
 import LogoImg3x from "../images/vm-logo-primary@3x.png";
+import ExCoSignUp from "./ExCoSignUp";
 
 const SignUpContainer = () => {
   return (
@@ -23,7 +24,10 @@ const SignUpContainer = () => {
       <div className={styles.main}>
         <Switch>
           <Route exact path="/" render={() => <DefaultView />} />
-          <Route />
+          <Route
+            path="/sign_up/existing_company"
+            render={() => <ExCoSignUp />}
+          />
         </Switch>
       </div>
       <div className={styles.footer}>

@@ -1,15 +1,22 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  height: 280px;
+  height: 420px;
   width: 400px;
   border-radius: 2px;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
 }
 
-.getStarted {
-  width: 191px;
+.join_message {
+  width: 185px;
   height: 24px;
   font-size: 20px;
   font-weight: normal;
@@ -23,9 +30,9 @@
   margin-top: 40px;
 }
 
-.workEmail {
+.instructions {
   width: 320px;
-  height: 20px;
+  height: 40px;
   font-family: ProximaNova;
   font-size: 14px;
   font-weight: normal;
@@ -47,9 +54,34 @@
   margin-top: 10px;
 }
 
-.email_input_container {
+.name_container {
+  display: flex;
+}
+
+.first_name_container {
   margin-left: 30px;
   margin-top: 20px;
+  width: 165px;
+  height: 50px;
+  border: solid 1px #e2e6eb;
+  border-radius: 2px;
+  display: flex;
+}
+
+.last_name_container {
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 165px;
+  height: 50px;
+  border: solid 1px #e2e6eb;
+  border-radius: 2px;
+  display: flex;
+}
+
+.display_name_container,
+.password_container {
+  margin-left: 30px;
+  margin-top: 10px;
   width: 340px;
   height: 50px;
   border: solid 1px #e2e6eb;
@@ -57,7 +89,10 @@
   display: flex;
 }
 
-.email_input {
+.first_name_input,
+.last_name_input,
+.display_name_input,
+.password_input {
   padding: 15px;
   font-size: 14px;
   font-weight: normal;
@@ -73,12 +108,15 @@
   border: none;
 }
 
-.email_input::placeholder {
+.first_name_input::placeholder,
+.last_name_input::placeholder,
+.display_name_input::placeholder,
+.password_input::placeholder {
   color: #798898;
   opacity: 0.5;
 }
 
-.defaultViewBtn {
+.signup_btn {
   margin-left: 220px;
   margin-top: 20px;
   width: 150px;
@@ -94,4 +132,27 @@
   letter-spacing: 0.2px;
   text-align: center;
   color: #ffffff;
+}
+
+.tc_message {
+  text-align: center;
+  width: 400px;
+  height: 17px;
+  font-family: ProximaNova;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #e2e6eb;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tc_message .tc {
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: normal;
 }

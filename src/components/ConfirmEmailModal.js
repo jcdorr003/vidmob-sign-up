@@ -4,9 +4,7 @@ const ConfirmEmailModal = props => {
   const [message] = useState(props.message);
   const [show, setShow] = useState(props.show);
   useEffect(() => {
-    setTimeout(() => {
-      setShow(false);
-    }, 3000);
+    setShow(false);
   });
   return (
     <div className={show ? "modal display-block" : "modal display-none"}>

@@ -7,11 +7,11 @@ import ConfirmEmailModal from "./ConfirmEmailModal";
 const DefaultView = () => {
   return (
     <div className={styles.container}>
+      <ConfirmEmailModal />
+      <div className={styles.getStarted}>Get started on VidMob</div>
+      <div className={styles.workEmail}>Enter your work email.</div>
+      <div className={styles.line} />
       <form>
-        <ConfirmEmailModal />
-        <div className={styles.getStarted}>Get started on VidMob</div>
-        <div className={styles.workEmail}>Enter your work email.</div>
-        <div className={styles.line} />
         <div className={styles.email_input_container}>
           <FormInput
             type={"email"}
@@ -19,7 +19,12 @@ const DefaultView = () => {
             className={styles.email_input}
           />
         </div>
-        <Button className={styles.defaultViewBtn}>NEXT</Button>
+        <Button
+          to={"/sign_up/existing_company"}
+          className={styles.defaultViewBtn}
+        >
+          NEXT
+        </Button>
       </form>
     </div>
   );
