@@ -28,6 +28,7 @@ const SignUpContainer = () => {
             path="/sign_up/existing_company"
             render={() => <ExCoSignUp />}
           />
+          <Route path="/sign_up/new_company" render={() => <NewCoSignUp />} />
         </Switch>
       </div>
       <div className={styles.footer}>
