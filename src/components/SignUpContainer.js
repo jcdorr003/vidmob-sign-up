@@ -6,6 +6,7 @@ import LogoImg from "../images/vm-logo-primary.png";
 import LogoImg2x from "../images/vm-logo-primary@2x.png";
 import LogoImg3x from "../images/vm-logo-primary@3x.png";
 import ExCoSignUp from "./ExCoSignUp";
+import NewCoSignUp from "./NewCoSignUp";
 
 const SignUpContainer = () => {
   return (
