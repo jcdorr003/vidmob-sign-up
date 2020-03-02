@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const FormInput = props => {
-  // const [inputType] = useState(props.type);
+  const [inputType] = useState(props.type);
   // const [inputValue, setInputValue] = useState("");
   // const [company, setCompany] = useState(props.company);
 
@@ -31,6 +31,7 @@ const FormInput = props => {
   return (
     <>
       <input
+        type={inputType}
         value={props.inputValue}
         className={props.className}
         placeholder={props.placeholder}

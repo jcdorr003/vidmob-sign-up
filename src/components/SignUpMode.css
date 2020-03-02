@@ -8,15 +8,15 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 428px;
   width: 400px;
   border-radius: 2px;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
 }
 
-.get_started_message {
-  width: 191px;
+.title {
+  width: 201px;
   height: 24px;
   font-family: ProximaNova;
   font-size: 20px;
@@ -31,12 +31,8 @@
   margin-top: 40px;
 }
 
-.b_span {
-  letter-spacing: normal;
-}
-
 .instructions {
-  width: 320px;
+  width: 340px;
   height: 60px;
   font-family: ProximaNova;
   font-size: 14px;
@@ -59,35 +55,38 @@
   margin-top: 10px;
 }
 
-.name_container {
+.toggle_container {
   display: flex;
+  align-items: center;
+  height: 24px;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
-.first_name_container {
+.any_email_toggle {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.any_email_message {
+  width: 172px;
+  height: 24px;
+  font-family: ProximaNova;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: -0.2px;
+  text-align: left;
+  color: #283647;
+  margin-left: 16px;
+}
+
+.domain_input_container {
   margin-left: 30px;
   margin-top: 20px;
-  width: 165px;
-  height: 50px;
-  border: solid 1px #e2e6eb;
-  border-radius: 2px;
-  display: flex;
-}
-
-.last_name_container {
-  margin-left: 10px;
-  margin-top: 20px;
-  width: 165px;
-  height: 50px;
-  border: solid 1px #e2e6eb;
-  border-radius: 2px;
-  display: flex;
-}
-
-.display_name_container,
-.password_container,
-.company_container {
-  margin-left: 30px;
-  margin-top: 10px;
   width: 340px;
   height: 50px;
   border: solid 1px #e2e6eb;
@@ -95,11 +94,7 @@
   display: flex;
 }
 
-.first_name_input,
-.last_name_input,
-.display_name_input,
-.password_input,
-.company_input {
+.domain_input {
   padding: 15px;
   font-size: 14px;
   font-weight: normal;
@@ -115,16 +110,49 @@
   border: none;
 }
 
-.first_name_input::placeholder,
-.last_name_input::placeholder,
-.display_name_input::placeholder,
-.password_input::placeholder,
-.company_input::placeholder {
+.domain_input::placeholder {
   color: #798898;
   opacity: 0.5;
 }
 
-.signup_btn {
+.invite_toggle_container {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.icon_container {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.invite_message {
+  width: 61px;
+  height: 24px;
+  font-family: ProximaNova;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: -0.2px;
+  text-align: left;
+  color: #283647;
+  margin-left: 16px;
+}
+
+.btn_done {
   margin-left: 220px;
   margin-top: 20px;
   width: 150px;
@@ -140,27 +168,4 @@
   letter-spacing: 0.2px;
   text-align: center;
   color: #ffffff;
-}
-
-.tc_message {
-  text-align: center;
-  width: 400px;
-  height: 17px;
-  font-family: ProximaNova;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.2px;
-  color: #e2e6eb;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.tc_message .tc {
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: normal;
 }

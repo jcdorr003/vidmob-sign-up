@@ -57,6 +57,11 @@
   display: flex;
 }
 
+.email_input_container_error {
+  composes: email_input_container;
+  border: solid 1px #de5454;
+}
+
 .email_input {
   padding: 15px;
   font-size: 14px;

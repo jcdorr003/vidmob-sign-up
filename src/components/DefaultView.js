@@ -4,14 +4,15 @@ import styles from "./DefaultView.css";
 import Button from "./Button";
 import FormInput from "./FormInput";
 import ConfirmEmailModal from "./ConfirmEmailModal";
+import EmailError from "./EmailError";
 
 const DefaultView = props => {
-  const [inputType] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [toNewCo, setToNewCo] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const data = {
     companies: ["google", "facebook", "vidmob"],
@@ -41,7 +42,7 @@ const DefaultView = props => {
     setEmail(inputValue);
     setCompany(inputValue);
     if (data.emails.includes(email) === true) {
-      alert("This email already exists!");
+      setShowError(true);
     } else if (data.companies.includes(company) === true) {
       setShowModal(true);
     } else {
@@ -59,14 +60,21 @@ const DefaultView = props => {
 
   return (
     <>
-      {toNewCo ? <Redirect to="/sign_up/new_company" /> : null}
+      {toNewCo ? <Redirect to="/new_company" /> : null}
       <div className={styles.container}>
         <ConfirmEmailModal showModal={showModal} />
+        <EmailError showError={showError} />
         <div className={styles.getStarted}>Get started on VidMob</div>
         <div className={styles.workEmail}>Enter your work email.</div>
         <div className={styles.line} />
         <form>
-          <div className={styles.email_input_container}>
+          <div
+            className={
+              showError
+                ? styles.email_input_container_error
+                : styles.email_input_container
+            }
+          >
             <input
               type={"email"}
               placeholder={"name@company.com"}

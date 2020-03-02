@@ -1,4 +1,5 @@
 import React from "react";
+// import closeSvg from "../images/ic-clear.svg";
 
 const Button = props => {
   // const handleClick = e => {
