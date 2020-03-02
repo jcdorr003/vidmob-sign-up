@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import styles from "./DefaultView.css";
 import Button from "./Button";
-import FormInput from "./FormInput";
 import ConfirmEmailModal from "./ConfirmEmailModal";
 import EmailError from "./EmailError";
 
@@ -26,7 +25,7 @@ const DefaultView = props => {
       setEmail("");
     }
     if (email.length >= 1) {
-      getCompany(email);
+      splitEmail(email);
     } else setCompany("");
   });
 
@@ -35,12 +34,11 @@ const DefaultView = props => {
 
   const handleChange = event => {
     setInputValue(event.target.value);
+    if (props.onChange) props.onChange(inputValue);
   };
 
   const handleClick = e => {
     e.preventDefault();
-    setEmail(inputValue);
-    setCompany(inputValue);
     if (data.emails.includes(email) === true) {
       setShowError(true);
     } else if (data.companies.includes(company) === true) {
@@ -50,7 +48,7 @@ const DefaultView = props => {
     }
   };
 
-  const getCompany = email => {
+  const splitEmail = email => {
     let firstSplit = email.split("@");
     let secondSplit = firstSplit[1].split(".");
     secondSplit.pop();

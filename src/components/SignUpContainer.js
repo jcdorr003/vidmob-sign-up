@@ -2,9 +2,7 @@ import React from "react";
 import styles from "./SignUpContainer.css";
 import DefaultView from "./DefaultView";
 import { Switch, Route, Redirect, Link } from "react-router-dom";
-import LogoImg from "../images/vm-logo-primary.png";
-import LogoImg2x from "../images/vm-logo-primary@2x.png";
-import LogoImg3x from "../images/vm-logo-primary@3x.png";
+import logoSvg from "../images/vm-logo-primary.svg";
 import ExCoSignUp from "./ExCoSignUp";
 import NewCoSignUp from "./NewCoSignUp";
 import SignUpMode from "./SignUpMode";
@@ -14,11 +12,7 @@ const SignUpContainer = () => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <Link to="/">
-          <img
-            className={styles.logo}
-            src={LogoImg}
-            srcSet={(LogoImg2x, LogoImg3x)}
-          />
+          <img className={styles.logo} src={logoSvg} />
         </Link>
         <div className={styles.login}>
           <p className={styles.loginMessage}>Already have an account?</p>
@@ -30,7 +24,7 @@ const SignUpContainer = () => {
           <Route exact path="/get_started" render={() => <DefaultView />} />
           <Route path="/existing_company" component={ExCoSignUp} />
           <Route path="/new_company" component={NewCoSignUp} />
-          <Route path="/sign_up_mode" render={() => <SignUpMode />} />
+          <Route path="/sign_up_mode" component={SignUpMode} />
           <Redirect from="/" to="get_started" />
         </Switch>
       </div>

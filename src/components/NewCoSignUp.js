@@ -4,7 +4,7 @@ import styles from "./NewCoSignUp.css";
 import FormInput from "./FormInput";
 import Button from "./Button";
 
-const NewCoSignUp = () => {
+const NewCoSignUp = props => {
   const [toSignUpMode, setToSignUpMode] = useState(false);
 
   const handleClick = e => {
