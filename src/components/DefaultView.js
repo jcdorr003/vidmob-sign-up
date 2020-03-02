@@ -39,12 +39,16 @@ const DefaultView = props => {
 
   const handleClick = e => {
     e.preventDefault();
-    if (data.emails.includes(email) === true) {
-      setShowError(true);
-    } else if (data.companies.includes(company) === true) {
-      setShowModal(true);
+    if (email.length >= 1 === true) {
+      if (data.emails.includes(email) === true) {
+        setShowError(true);
+      } else if (data.companies.includes(company) === true) {
+        setShowModal(true);
+      } else {
+        setToNewCo(true);
+      }
     } else {
-      setToNewCo(true);
+      return null;
     }
   };
 
