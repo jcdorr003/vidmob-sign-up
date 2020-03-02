@@ -32,6 +32,7 @@ const DefaultView = props => {
   const handleChange = event => {
     setInputValue(event.target.value);
     if (props.onChange) props.onChange(inputValue);
+    setShowError(false);
   };
 
   const handleClick = e => {
