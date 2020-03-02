@@ -46,7 +46,7 @@ const DefaultView = props => {
         setToNewCo(true);
       }
     } else {
-      return null;
+      return setInputValue("");
     }
   };
 

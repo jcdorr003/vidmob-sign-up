@@ -34,7 +34,7 @@ const ExCoSignUp = () => {
           <div className={styles.display_name_container}>
             <FormInput
               type={"text"}
-              placeholder={"Display Name"}
+              placeholder={`Display Name                                                  ${"(optional)"}`}
               className={styles.display_name_input}
             />
           </div>
