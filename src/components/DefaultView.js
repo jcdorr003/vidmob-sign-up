@@ -29,9 +29,6 @@ const DefaultView = props => {
     } else setCompany("");
   });
 
-  console.log(email);
-  console.log(company);
-
   const handleChange = event => {
     setInputValue(event.target.value);
     if (props.onChange) props.onChange(inputValue);
