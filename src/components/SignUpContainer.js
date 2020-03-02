@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SignUpContainer.css";
 import DefaultView from "./DefaultView";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
 import LogoImg from "../images/vm-logo-primary.png";
 import LogoImg2x from "../images/vm-logo-primary@2x.png";
 import LogoImg3x from "../images/vm-logo-primary@3x.png";
@@ -13,11 +13,13 @@ const SignUpContainer = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <img
-          className={styles.logo}
-          src={LogoImg}
-          srcSet={(LogoImg2x, LogoImg3x)}
-        />
+        <Link to="/">
+          <img
+            className={styles.logo}
+            src={LogoImg}
+            srcSet={(LogoImg2x, LogoImg3x)}
+          />
+        </Link>
         <div className={styles.login}>
           <p className={styles.loginMessage}>Already have an account?</p>
           <button className={styles.btnlogin}>LOG IN</button>

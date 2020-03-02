@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import styles from "./ExCoSignUp.css";
 import FormInput from "./FormInput";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const ExCoSignUp = () => {
   return (
@@ -44,7 +45,9 @@ const ExCoSignUp = () => {
               className={styles.password_input}
             />
           </div>
-          <Button className={styles.signup_btn}>SIGN UP</Button>
+          <Link to="/">
+            <Button className={styles.signup_btn}>SIGN UP</Button>
+          </Link>
         </form>
       </div>
 

@@ -4,6 +4,7 @@ import Button from "./Button";
 import Toggle from "./Toggle";
 import toggleSvg from "../images/ic-selected.svg";
 import uncheckedSvg from "../images/ic-unchecked.svg";
+import { Link } from "react-router-dom";
 
 const SignUpMode = () => {
   return (
@@ -37,7 +38,9 @@ const SignUpMode = () => {
             </div>
             <p className={styles.invite_message}>Invite only</p>
           </div>
-          <Button className={styles.btn_done}>DONE</Button>
+          <Link to="/">
+            <Button className={styles.btn_done}>DONE</Button>
+          </Link>
         </form>
       </div>
     </div>
