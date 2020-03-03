@@ -12,6 +12,14 @@ At the default page, to test functionality, type in already used email. This wil
 
 This is the fake data to test the application sign up flow and functionality.
 
-Existing Emails: jc@vidmob.com, brittany@google.com
-Existing Companies: Google, Facebook, VidMob
-Personal Email Domains: gmail, outlook, yahoo
+```sh
+Existing Emails: "jc@vidmob.com", "brittany@google.com"
+```
+
+```sh
+Existing Companies: "google", "facebook", "vidmob"
+```
+
+```sh
+Personal Email Domains: "gmail", "outlook", "yahoo"
+```
