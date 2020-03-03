@@ -10,4 +10,8 @@ At the default page, to test functionality, type in already used email. This wil
 
 ## Fake Data
 
-![Image description]("./images/Screen Shot 2020-03-03 at 2.38.16 PM.png")
+This is the fake data to test the application sign up flow and functionality.
+
+Existing Emails: jc@vidmob.com, brittany@google.com
+Existing Companies: Google, Facebook, VidMob
+Personal Email Domains: gmail, outlook, yahoo
