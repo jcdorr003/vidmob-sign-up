@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./PersonalEmailWarning.js";
+import { Link } from "react-router-dom";
+import styles from "./PersonalEmailWarning.css";
 import Button from "./Button.js";
 
 const PersonalEmailWarning = props => {
@@ -10,15 +11,21 @@ const PersonalEmailWarning = props => {
       }
     >
       <div className={styles.modal_container}>
-        <div className={styles.modal_title}>That looks familiar</div>
+        <div className={styles.modal_title}>
+          That looks like a personal email
+        </div>
         <div className={styles.modal_message}>
-          That email looks like it’s part of an exisitng company. Check your
-          email for an invite to your company.
+          Press continue to create a new team, or go back to try finding your
+          team instead.
         </div>
         <div className={styles.line} />
-        <div>
-          <Button />
-          <Button />
+        <div className={styles.btn_container}>
+          <Link to="/">
+            <Button className={styles.btn_back}>BACK</Button>
+          </Link>
+          <Link to="/new_company">
+            <Button className={styles.btn_continue}>CONTINUE</Button>
+          </Link>
         </div>
       </div>
     </div>
