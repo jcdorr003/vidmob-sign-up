@@ -4,6 +4,7 @@ import styles from "./DefaultView.css";
 import Button from "./Button";
 import ConfirmEmailModal from "./ConfirmEmailModal";
 import EmailError from "./EmailError";
+import PersonalEmailWarning from "./PersonalEmailWarning";
 
 const DefaultView = props => {
   const [inputValue, setInputValue] = useState("");
@@ -12,10 +13,12 @@ const DefaultView = props => {
   const [toNewCo, setToNewCo] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [showEmailWarning, setShowEmailWarning] = useState(false);
 
   const data = {
     companies: ["google", "facebook", "vidmob"],
-    emails: ["jc@vidmob.com", "brittany@google.com"]
+    emails: ["jc@vidmob.com", "brittany@google.com"],
+    personalEmails: ["gmail", "outlook", "yahoo"]
   };
 
   useEffect(() => {
@@ -42,6 +45,8 @@ const DefaultView = props => {
         setShowError(true);
       } else if (data.companies.includes(company) === true) {
         setShowModal(true);
+        // } else if (data.personalEmails.includes(company) === true) {
+        //   setShowEmailWarning(true);
       } else {
         setToNewCo(true);
       }
@@ -54,8 +59,8 @@ const DefaultView = props => {
     let firstSplit = email.split("@");
     let secondSplit = firstSplit[1].split(".");
     secondSplit.pop();
-    let newCompany = secondSplit.toString();
-    setCompany(newCompany);
+    let domain = secondSplit.toString();
+    setCompany(domain);
   };
 
   return (
@@ -64,6 +69,7 @@ const DefaultView = props => {
       <div className={styles.container}>
         <ConfirmEmailModal showModal={showModal} />
         <EmailError showError={showError} />
+        {/* <PersonalEmailWarning showEmailWarning={showEmailWarning} /> */}
         <div className={styles.getStarted}>Get started on VidMob</div>
         <div className={styles.workEmail}>Enter your work email.</div>
         <div className={styles.line} />
