@@ -45,8 +45,8 @@ const DefaultView = props => {
         setShowError(true);
       } else if (data.companies.includes(company) === true) {
         setShowModal(true);
-        // } else if (data.personalEmails.includes(company) === true) {
-        //   setShowEmailWarning(true);
+      } else if (data.personalEmails.includes(company) === true) {
+        setShowEmailWarning(true);
       } else {
         setToNewCo(true);
       }
@@ -67,9 +67,9 @@ const DefaultView = props => {
     <>
       {toNewCo ? <Redirect to="/new_company" /> : null}
       <div className={styles.container}>
+        <PersonalEmailWarning showEmailWarning={showEmailWarning} />
         <ConfirmEmailModal showModal={showModal} />
         <EmailError showError={showError} />
-        {/* <PersonalEmailWarning showEmailWarning={showEmailWarning} /> */}
         <div className={styles.getStarted}>Get started on VidMob</div>
         <div className={styles.workEmail}>Enter your work email.</div>
         <div className={styles.line} />

@@ -17,3 +17,82 @@
   composes: disabledOverlay;
   display: flex;
 }
+
+.modal_container {
+  width: 400px;
+  height: 200px;
+  border-radius: 2px;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+
+.modal_title {
+  width: 340px;
+  height: 20px;
+  font-family: ProximaNova;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #283647;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.modal_message {
+  width: 340px;
+  height: 40px;
+  font-family: ProximaNova;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: -0.2px;
+  color: #798898;
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+.line {
+  width: 340px;
+  height: 1px;
+  background-color: #e2e6eb;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.btn_container {
+  height: 34px;
+  width: 205px;
+  margin-top: 20px;
+  margin-left: 165px;
+}
+
+.btn_back,
+.btn_continue {
+  width: 100px;
+  height: 34px;
+  border-radius: 100px;
+  font-family: ProximaNova;
+  font-size: 11px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+
+.btn_back {
+  background-color: #798898;
+}
+
+.btn_continue {
+  background-color: #2c9db7;
+  margin-left: 5px;
+}
