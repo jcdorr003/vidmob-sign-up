@@ -18,3 +18,7 @@
   box-sizing: border-box;
   font-family: "ProximaNova";
 }
+
+input:focus {
+  outline: none;
+}
