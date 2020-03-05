@@ -3,8 +3,8 @@ import { Link, Redirect } from "react-router-dom";
 import styles from "./DefaultView.css";
 import Button from "./Button";
 import ConfirmEmailModal from "./ConfirmEmailModal";
-import EmailError from "./EmailError";
 import PersonalEmailWarning from "./PersonalEmailWarning";
+import FormInput from "./FormInput";
 
 const DefaultView = props => {
   const [inputValue, setInputValue] = useState("");
@@ -65,11 +65,23 @@ const DefaultView = props => {
 
   return (
     <>
-      {toNewCo ? <Redirect to="/new_company" /> : null}
+      {toNewCo ? (
+        <Redirect
+          to={{
+            pathname: "/new_company"
+          }}
+        />
+      ) : null}
       <div className={styles.container}>
         <PersonalEmailWarning showEmailWarning={showEmailWarning} />
         <ConfirmEmailModal showModal={showModal} />
-        <EmailError showError={showError} />
+        <div className={showError ? styles.modal : styles.disabledModal}>
+          <p className={styles.error_message}>
+            That email looks like it’s already taken. Do you want to{" "}
+            <span className={styles.login_reset}>login </span>or{" "}
+            <span className={styles.login_reset}>reset your password</span>?
+          </p>
+        </div>
         <div className={styles.getStarted}>Get started on VidMob</div>
         <div className={styles.workEmail}>Enter your work email.</div>
         <div className={styles.line} />
@@ -81,11 +93,11 @@ const DefaultView = props => {
                 : styles.email_input_container
             }
           >
-            <input
+            <FormInput
               type={"email"}
               placeholder={"name@company.com"}
               className={styles.email_input}
-              onChange={handleChange}
+              onChange={event => handleChange(event)}
               value={inputValue}
             />
           </div>
