@@ -164,3 +164,39 @@
   font-weight: bold;
   letter-spacing: normal;
 }
+
+.disabledModal {
+  display: none;
+}
+
+.modal {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 78px;
+  border-radius: 2px;
+  background-color: #de5454;
+  margin-top: 255px;
+  margin-left: 100px;
+}
+
+.error_message {
+  width: 170px;
+  height: 48px;
+  font-family: ProximaNova;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: -0.2px;
+  text-align: center;
+  color: #ffffff;
+  margin-left: 15px;
+  margin-top: 13px;
+}
+
+.company_container_error {
+  composes: company_container;
+  border: solid 1px #de5454;
+}

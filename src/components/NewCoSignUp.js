@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import styles from "./NewCoSignUp.css";
 import FormInput from "./FormInput";
 import Button from "./Button";
+import Error from "./Error";
+import ConfirmEmailModal from "./ConfirmEmailModal";
 
-const NewCoSignUp = () => {
+const NewCoSignUp = props => {
   const [toSignUpMode, setToSignUpMode] = useState(false);
+  const [value, setValue] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [exCompanyError, setExCompanyError] = useState(false);
+
+  const data = { companies: ["google", "facebook", "vidmob"] };
+
+  useEffect(() => {
+    setCompanyName(value);
+  });
+
+  console.log(exCompanyError);
+
+  const handleChange = event => {
+    setValue(event.target.value);
+    setExCompanyError(false);
+  };
 
   const handleClick = e => {
     e.preventDefault();
-    setToSignUpMode(true);
+    if (companyName.length >= 1) {
+      if (data.companies.includes(companyName.toLowerCase()) === true) {
+        setExCompanyError(true);
+      } else {
+        setToSignUpMode(true);
+      }
+    } else {
+      return setValue("");
+    }
   };
 
   return (
@@ -17,6 +43,13 @@ const NewCoSignUp = () => {
       {toSignUpMode ? <Redirect to="/sign_up_mode" /> : null}
       <div className={styles.wrapper}>
         <div className={styles.container}>
+          <div className={exCompanyError ? styles.modal : styles.disabledModal}>
+            <p className={styles.error_message}>
+              That company looks like it already exists. Try to Find My Team
+              using your work email.
+            </p>
+          </div>
+
           <p className={styles.get_started_message}>
             Get started on VidMo<span className={styles.b_span}>b</span>
           </p>
@@ -56,11 +89,18 @@ const NewCoSignUp = () => {
                 className={styles.password_input}
               />
             </div>
-            <div className={styles.company_container}>
+            <div
+              className={
+                exCompanyError
+                  ? styles.company_container_error
+                  : styles.company_container
+              }
+            >
               <FormInput
                 type={"text"}
                 placeholder={"Company Name"}
                 className={styles.company_input}
+                onChange={handleChange}
               />
             </div>
             <Button onClick={handleClick} className={styles.signup_btn}>
