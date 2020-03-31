@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./SignUpMode.css";
 import Button from "./Button";
-import Toggle from "./Toggle";
 import toggleSvg from "../images/ic-selected.svg";
 import uncheckedSvg from "../images/ic-unchecked.svg";
 import { Link } from "react-router-dom";

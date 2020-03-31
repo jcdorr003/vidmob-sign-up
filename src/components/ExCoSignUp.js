@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styles from "./ExCoSignUp.css";
 import FormInput from "./FormInput";
 import Button from "./Button";
