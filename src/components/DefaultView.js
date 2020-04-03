@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import styles from "./DefaultView.css";
 import Button from "./Button";
 import ConfirmEmailModal from "./ConfirmEmailModal";
 import PersonalEmailWarning from "./PersonalEmailWarning";
 import FormInput from "./FormInput";
+import { preValidation } from "../services/api-helper";
 
 const DefaultView = props => {
   const [inputValue, setInputValue] = useState("");
-  const [company, setCompany] = useState("");
+  const [businessName, setBusinessName] = useState("");
   const [email, setEmail] = useState("");
   const [toNewCo, setToNewCo] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showEmailWarning, setShowEmailWarning] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState();
 
   const data = {
     companies: ["google", "facebook", "vidmob"],
@@ -21,15 +23,21 @@ const DefaultView = props => {
     personalEmails: ["gmail", "outlook", "yahoo"]
   };
 
+  const getEmailValidation = () => {
+    const newStatus = preValidation(email);
+    setIsEmailValid(newStatus);
+  };
+
   useEffect(() => {
     if (inputValue.includes("@" && ".") === true) {
       setEmail(inputValue);
     } else {
       setEmail("");
+      setIsEmailValid(undefined);
     }
     if (email.length >= 1) {
       splitEmail(email);
-    } else setCompany("");
+    } else setBusinessName("");
   });
 
   const handleChange = event => {
@@ -40,15 +48,20 @@ const DefaultView = props => {
 
   const handleClick = e => {
     e.preventDefault();
+    getEmailValidation();
+
+    console.log("this is email status", isEmailValid);
+
     if (email.length >= 1 === true) {
-      if (data.emails.includes(email) === true) {
+      // if (data.emails.includes(email) === true) {
+      if (isEmailValid == undefined) {
         setShowError(true);
-      } else if (data.companies.includes(company) === true) {
-        setShowModal(true);
-      } else if (data.personalEmails.includes(company) === true) {
-        setShowEmailWarning(true);
-      } else {
-        setToNewCo(true);
+        // } else if (data.companies.includes(businessName) === true) {
+        //   setShowModal(true);
+        // } else if (data.personalEmails.includes(businessName) === true) {
+        //   setShowEmailWarning(true);
+        //   } else {
+        //     setToNewCo(true);
       }
     } else {
       return setInputValue("");
@@ -60,7 +73,7 @@ const DefaultView = props => {
     let secondSplit = firstSplit[1].split(".");
     secondSplit.pop();
     let domain = secondSplit.toString();
-    setCompany(domain);
+    setBusinessName(domain);
   };
 
   return (
