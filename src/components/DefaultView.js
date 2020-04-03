@@ -5,7 +5,7 @@ import Button from "./Button";
 import ConfirmEmailModal from "./ConfirmEmailModal";
 import PersonalEmailWarning from "./PersonalEmailWarning";
 import FormInput from "./FormInput";
-import { preValidation } from "../services/api-helper";
+import { emailPreValidation } from "../services/api-helper";
 
 const DefaultView = props => {
   const [inputValue, setInputValue] = useState("");
@@ -15,7 +15,7 @@ const DefaultView = props => {
   const [showModal, setShowModal] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showEmailWarning, setShowEmailWarning] = useState(false);
-  const [isEmailValid, setIsEmailValid] = useState();
+  const [emailIsValid, setEmailIsValid] = useState(false);
 
   const data = {
     companies: ["google", "facebook", "vidmob"],
@@ -23,17 +23,17 @@ const DefaultView = props => {
     personalEmails: ["gmail", "outlook", "yahoo"]
   };
 
-  const getEmailValidation = () => {
-    const newStatus = preValidation(email);
-    setIsEmailValid(newStatus);
+  const getEmailValidation = async () => {
+    const newStatus = await emailPreValidation(email);
+    console.log(newStatus);
+    setEmailIsValid(newStatus);
   };
-
   useEffect(() => {
     if (inputValue.includes("@" && ".") === true) {
       setEmail(inputValue);
     } else {
       setEmail("");
-      setIsEmailValid(undefined);
+      setEmailIsValid(false);
     }
     if (email.length >= 1) {
       splitEmail(email);
@@ -50,18 +50,16 @@ const DefaultView = props => {
     e.preventDefault();
     getEmailValidation();
 
-    console.log("this is email status", isEmailValid);
-
     if (email.length >= 1 === true) {
       // if (data.emails.includes(email) === true) {
-      if (isEmailValid == undefined) {
+      if (emailIsValid === false) {
         setShowError(true);
-        // } else if (data.companies.includes(businessName) === true) {
-        //   setShowModal(true);
-        // } else if (data.personalEmails.includes(businessName) === true) {
-        //   setShowEmailWarning(true);
-        //   } else {
-        //     setToNewCo(true);
+      } else if (data.companies.includes(businessName) === true) {
+        setShowModal(true);
+      } else if (data.personalEmails.includes(businessName) === true) {
+        setShowEmailWarning(true);
+      } else {
+        setToNewCo(true);
       }
     } else {
       return setInputValue("");

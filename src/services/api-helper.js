@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const BASE_URL = "https://api-dev.vidmob.com";
 
-export const preValidation = async email => {
+export const emailPreValidation = async email => {
   try {
     const resp = await axios.get(
       `${BASE_URL}/VidMob/api/noauth/v1/signupPrevalidation`,
@@ -14,6 +14,7 @@ export const preValidation = async email => {
     // console.log(resp);
     return resp.data.result.email;
   } catch (e) {
-    console.log(e.message);
+    return e.response.data.result.email;
+    // console.log(e.response.data.result.email);
   }
 };
