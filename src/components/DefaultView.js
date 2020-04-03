@@ -5,7 +5,10 @@ import Button from "./Button";
 import ConfirmEmailModal from "./ConfirmEmailModal";
 import PersonalEmailWarning from "./PersonalEmailWarning";
 import FormInput from "./FormInput";
-import { emailPreValidation } from "../services/api-helper";
+import {
+  emailPreValidation,
+  companyPreValidation
+} from "../services/api-helper";
 
 const DefaultView = props => {
   const [inputValue, setInputValue] = useState("");
@@ -16,18 +19,31 @@ const DefaultView = props => {
   const [showError, setShowError] = useState(false);
   const [showEmailWarning, setShowEmailWarning] = useState(false);
   const [emailIsValid, setEmailIsValid] = useState(false);
+  const [companyIsValid, setCompanyIsValid] = useState(false);
 
   const data = {
-    companies: ["google", "facebook", "vidmob"],
-    emails: ["jc@vidmob.com", "brittany@google.com"],
+    // companies: ["google", "facebook", "vidmob"],
+    // emails: ["jc@vidmob.com", "brittany@google.com"],
     personalEmails: ["gmail", "outlook", "yahoo"]
   };
+  useEffect(() => {
+    const getEmailValidation = async () => {
+      const newStatus = await emailPreValidation(email);
+      console.log("this is email validation", newStatus);
+      setEmailIsValid(newStatus);
+    };
+    getEmailValidation();
+  }, [email]);
 
-  const getEmailValidation = async () => {
-    const newStatus = await emailPreValidation(email);
-    console.log(newStatus);
-    setEmailIsValid(newStatus);
-  };
+  useEffect(() => {
+    const getCompanyValidation = async () => {
+      const newStatus = await companyPreValidation(businessName);
+      console.log("this is company validation", newStatus);
+      setCompanyIsValid(newStatus);
+    };
+    getCompanyValidation();
+  }, [businessName]);
+
   useEffect(() => {
     if (inputValue.includes("@" && ".") === true) {
       setEmail(inputValue);
@@ -37,7 +53,10 @@ const DefaultView = props => {
     }
     if (email.length >= 1) {
       splitEmail(email);
-    } else setBusinessName("");
+    } else {
+      setBusinessName("");
+      setCompanyIsValid(false);
+    }
   });
 
   const handleChange = event => {
@@ -48,13 +67,14 @@ const DefaultView = props => {
 
   const handleClick = e => {
     e.preventDefault();
-    getEmailValidation();
+    // getEmailValidation();
 
     if (email.length >= 1 === true) {
       // if (data.emails.includes(email) === true) {
       if (emailIsValid === false) {
         setShowError(true);
-      } else if (data.companies.includes(businessName) === true) {
+        // } else if (data.companies.includes(businessName) === true) {
+      } else if (companyIsValid === false) {
         setShowModal(true);
       } else if (data.personalEmails.includes(businessName) === true) {
         setShowEmailWarning(true);
