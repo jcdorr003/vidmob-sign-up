@@ -26,6 +26,22 @@ const DefaultView = props => {
     // emails: ["jc@vidmob.com", "brittany@google.com"],
     personalEmails: ["gmail", "outlook", "yahoo"]
   };
+
+  useEffect(() => {
+    if (inputValue.includes("@" && ".") === true) {
+      setEmail(inputValue);
+    } else {
+      setEmail("");
+      setEmailIsValid(false);
+    }
+    if (email.length >= 1) {
+      splitEmail(email);
+    } else {
+      setBusinessName("");
+      setCompanyIsValid(false);
+    }
+  });
+
   useEffect(() => {
     const getEmailValidation = async () => {
       const newStatus = await emailPreValidation(email);
@@ -44,21 +60,6 @@ const DefaultView = props => {
     getCompanyValidation();
   }, [businessName]);
 
-  useEffect(() => {
-    if (inputValue.includes("@" && ".") === true) {
-      setEmail(inputValue);
-    } else {
-      setEmail("");
-      setEmailIsValid(false);
-    }
-    if (email.length >= 1) {
-      splitEmail(email);
-    } else {
-      setBusinessName("");
-      setCompanyIsValid(false);
-    }
-  });
-
   const handleChange = event => {
     setInputValue(event.target.value);
     if (props.onChange) props.onChange(inputValue);
@@ -67,8 +68,6 @@ const DefaultView = props => {
 
   const handleClick = e => {
     e.preventDefault();
-    // getEmailValidation();
-
     if (email.length >= 1 === true) {
       // if (data.emails.includes(email) === true) {
       if (emailIsValid === false) {

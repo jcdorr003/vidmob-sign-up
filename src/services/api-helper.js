@@ -8,7 +8,7 @@ export const emailPreValidation = async email => {
       `${BASE_URL}/VidMob/api/noauth/v1/signupPrevalidation`,
       {
         headers: { "VidMob-App-Version": "1.9.2" },
-        params: { email: email }
+        params: { email }
       }
     );
     // console.log(resp);
@@ -25,13 +25,13 @@ export const companyPreValidation = async businessName => {
       `${BASE_URL}/VidMob/api/noauth/v1/signupPrevalidation`,
       {
         headers: { "VidMob-App-Version": "1.9.2" },
-        params: { businessName: businessName }
+        params: { businessName }
       }
     );
     // console.log(resp);
     return resp.data.result.businessName;
   } catch (e) {
-    return e.response.data.result.businessName;
     // console.log(e.response.data.result.email);
+    return e.response.data.result.businessName;
   }
 };
