@@ -3,41 +3,41 @@ import styles from "./ExCoSignUp.css";
 import FormInput from "./FormInput";
 import Button from "./Button";
 import { Link } from "react-router-dom";
+import { signup } from "../services/api-helper";
 
 const ExCoSignUp = props => {
-  const [email, setEmail] = useState(props.location.state);
+  const [email] = useState(props.location.state);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
-  const [value, setValue] = useState({});
-
-  // useEffect(() => {});
+  const [newUserData, setNewUserData] = useState({});
 
   console.log(firstName);
   console.log(lastName);
   console.log(displayName);
   console.log(password);
 
+  useEffect(() => {
+    const createNewUser = async () => {
+      await signup(newUserData);
+    };
+    createNewUser();
+    console.log(newUserData);
+  }, [newUserData]);
+
   const handleChange = e => {
-    if (e.target.name === "lastName") {
-      setLastName(e.target.value);
-    } else if (e.target.name === "firstName") {
-      setFirstName(e.target.value);
-    } else if (e.target.name === "displayName") {
-      setDisplayName(e.target.value);
-    } else if (e.target.name === "password") {
-      setPassword(e.target.value);
-    } else {
-      return null;
-    }
+    if (e.target.name === "lastName") setLastName(e.target.value);
+    if (e.target.name === "firstName") setFirstName(e.target.value);
+    if (e.target.name === "displayName") setDisplayName(e.target.value);
+    if (e.target.name === "password") setPassword(e.target.value);
   };
 
   const handleClick = e => {
     e.preventDefault();
+    setNewUserData({ firstName, lastName, displayName, email, password });
+    console.log(newUserData);
   };
-
-  console.log(email);
 
   return (
     <div className={styles.wrapper}>

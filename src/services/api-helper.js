@@ -39,12 +39,11 @@ export const companyPreValidation = async businessName => {
 export const signup = async () => {
   try {
     const resp = await axios.post(`${BASE_URL}/VidMob/api/noauth/v1/signup`, {
-      headers: { "VidMob-App-Version": "1.9.2" },
-      params: { firstName, lastName, displayName, email, password }
+      headers: { "VidMob-App-Version": "1.9.2" }
     });
     console.log(resp);
     return resp;
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
