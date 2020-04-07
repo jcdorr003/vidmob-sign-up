@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import styles from "./ConfirmEmailModal.css";
 import Button from "./Button";
@@ -6,6 +6,14 @@ import emailSvg from "../images/ic-large-email-generic.svg";
 
 const ConfirmEmailModal = props => {
   const [toExCo, setToExCo] = useState(false);
+  const [email, setEmail] = useState(props.email);
+
+  console.log(email);
+
+  useEffect(() => {
+    setEmail(props.email);
+  }, [props.email]);
+
   const handleClick = e => {
     e.preventDefault();
     setToExCo(true);
@@ -13,7 +21,14 @@ const ConfirmEmailModal = props => {
 
   return (
     <>
-      {toExCo ? <Redirect to="/existing_company" /> : null}
+      {toExCo ? (
+        <Redirect
+          to={{
+            pathname: "/existing_company",
+            state: email
+          }}
+        />
+      ) : null}
       <div
         className={props.showModal ? styles.overlay : styles.disabledOverlay}
       >

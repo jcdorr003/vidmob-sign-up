@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ExCoSignUp.css";
 import FormInput from "./FormInput";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 
-const ExCoSignUp = () => {
+const ExCoSignUp = props => {
+  const [email, setEmail] = useState(props.location.state);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [state, setState] = useState("");
+
+  useEffect(() => {
+    console.log(state);
+    console.log(firstName);
+  });
+
+  const handleChange = e => {
+    setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleClick = e => {
+    e.preventDefault();
+  };
+
+  console.log(email);
 
   return (
     <div className={styles.wrapper}>
@@ -22,16 +41,20 @@ const ExCoSignUp = () => {
           <div className={styles.name_container}>
             <div className={styles.first_name_container}>
               <FormInput
+                name={"firstName"}
                 type={"text"}
                 placeholder={"First Name"}
                 className={styles.first_name_input}
+                onChange={handleChange}
               />
             </div>
             <div className={styles.last_name_container}>
               <FormInput
+                name={"lastName"}
                 type={"text"}
                 placeholder={"Last Name"}
                 className={styles.last_name_input}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -50,7 +73,9 @@ const ExCoSignUp = () => {
             />
           </div>
           <Link to="/">
-            <Button className={styles.signup_btn}>SIGN UP</Button>
+            <Button className={styles.signup_btn} onClick={handleClick}>
+              SIGN UP
+            </Button>
           </Link>
         </form>
       </div>

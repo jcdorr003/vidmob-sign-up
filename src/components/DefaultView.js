@@ -109,7 +109,7 @@ const DefaultView = props => {
       ) : null}
       <div className={styles.container}>
         <PersonalEmailWarning showEmailWarning={showEmailWarning} />
-        <ConfirmEmailModal showModal={showModal} />
+        <ConfirmEmailModal showModal={showModal} email={email} />
         <div className={showError ? styles.modal : styles.disabledModal}>
           <p className={styles.error_message}>
             That email looks like it’s already taken. Do you want to{" "}
