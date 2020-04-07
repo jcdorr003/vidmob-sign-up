@@ -9,17 +9,28 @@ const ExCoSignUp = props => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [state, setState] = useState("");
+  const [password, setPassword] = useState("");
+  const [value, setValue] = useState({});
 
-  useEffect(() => {
-    console.log(state);
-    console.log(firstName);
-  });
+  // useEffect(() => {});
+
+  console.log(firstName);
+  console.log(lastName);
+  console.log(displayName);
+  console.log(password);
 
   const handleChange = e => {
-    setState({
-      [e.target.name]: e.target.value
-    });
+    if (e.target.name === "lastName") {
+      setLastName(e.target.value);
+    } else if (e.target.name === "firstName") {
+      setFirstName(e.target.value);
+    } else if (e.target.name === "displayName") {
+      setDisplayName(e.target.value);
+    } else if (e.target.name === "password") {
+      setPassword(e.target.value);
+    } else {
+      return null;
+    }
   };
 
   const handleClick = e => {
@@ -60,16 +71,20 @@ const ExCoSignUp = props => {
           </div>
           <div className={styles.display_name_container}>
             <FormInput
+              name={"displayName"}
               type={"text"}
               placeholder={`Display Name                                                  ${"(optional)"}`}
               className={styles.display_name_input}
+              onChange={handleChange}
             />
           </div>
           <div className={styles.password_container}>
             <FormInput
+              name={"password"}
               type={"password"}
               placeholder={"Password"}
               className={styles.password_input}
+              onChange={handleChange}
             />
           </div>
           <Link to="/">
