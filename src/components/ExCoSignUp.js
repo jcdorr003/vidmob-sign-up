@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ExCoSignUp.css";
 import FormInput from "./FormInput";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 
 const ExCoSignUp = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [displayName, setDisplayName] = useState("");
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>

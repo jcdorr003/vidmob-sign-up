@@ -11,14 +11,19 @@ const NewCoSignUp = props => {
   const [value, setValue] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [exCompanyError, setExCompanyError] = useState(false);
+  const [email, setEmail] = useState(props.location.state);
+  const [firstName, setFirstName] = useState("");
+
+  console.log("this is email state", email);
+  console.log("this is first name", firstName);
+
+  console.log("this is props", props.location.state);
 
   const data = { companies: ["google", "facebook", "vidmob"] };
 
   useEffect(() => {
     setCompanyName(value);
   });
-
-  console.log(exCompanyError);
 
   const handleChange = event => {
     setValue(event.target.value);
@@ -65,6 +70,7 @@ const NewCoSignUp = props => {
                   type={"text"}
                   placeholder={"First Name"}
                   className={styles.first_name_input}
+                  onChange={handleChange}
                 />
               </div>
               <div className={styles.last_name_container}>

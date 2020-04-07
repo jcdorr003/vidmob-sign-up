@@ -27,6 +27,8 @@ const DefaultView = props => {
     personalEmails: ["gmail", "outlook", "yahoo"]
   };
 
+  console.log(email);
+
   useEffect(() => {
     if (inputValue.includes("@" && ".") === true) {
       setEmail(inputValue);
@@ -81,6 +83,7 @@ const DefaultView = props => {
         setToNewCo(true);
       }
     } else {
+      // return null;
       return setInputValue("");
     }
   };
@@ -97,8 +100,10 @@ const DefaultView = props => {
     <>
       {toNewCo ? (
         <Redirect
+          push
           to={{
-            pathname: "/new_company"
+            pathname: "/new_company",
+            state: email
           }}
         />
       ) : null}
