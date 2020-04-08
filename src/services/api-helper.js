@@ -2,13 +2,13 @@ const axios = require("axios");
 
 const BASE_URL = "https://api-dev.vidmob.com";
 
-export const emailPreValidation = async email => {
+export const emailPreValidation = async (email) => {
   try {
     const resp = await axios.get(
       `${BASE_URL}/VidMob/api/noauth/v1/signupPrevalidation`,
       {
         headers: { "VidMob-App-Version": "1.9.2" },
-        params: { email }
+        params: { email },
       }
     );
     // console.log(resp);
@@ -19,13 +19,13 @@ export const emailPreValidation = async email => {
   }
 };
 
-export const companyPreValidation = async businessName => {
+export const companyPreValidation = async (businessName) => {
   try {
     const resp = await axios.get(
       `${BASE_URL}/VidMob/api/noauth/v1/signupPrevalidation`,
       {
         headers: { "VidMob-App-Version": "1.9.2" },
-        params: { businessName }
+        params: { businessName },
       }
     );
     // console.log(resp);
@@ -36,10 +36,20 @@ export const companyPreValidation = async businessName => {
   }
 };
 
-export const signup = async () => {
+export const signup = async (
+  firstName,
+  lastName,
+  displayName,
+  email,
+  password
+) => {
   try {
     const resp = await axios.post(`${BASE_URL}/VidMob/api/noauth/v1/signup`, {
-      headers: { "VidMob-App-Version": "1.9.2" }
+      firstName: firstName,
+      lastName: lastName,
+      displayName: displayName,
+      email: email,
+      password: password,
     });
     console.log(resp);
     return resp;
