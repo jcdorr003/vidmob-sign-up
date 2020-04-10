@@ -5,7 +5,7 @@ import Button from "./Button";
 import { Link } from "react-router-dom";
 import { signup } from "../services/api-helper";
 
-const ExCoSignUp = (props) => {
+const ExCoSignUp = props => {
   const [email] = useState(props.location.state);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -26,14 +26,14 @@ const ExCoSignUp = (props) => {
     console.log(newUserData);
   }, [newUserData]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     if (e.target.name === "lastName") setLastName(e.target.value);
     if (e.target.name === "firstName") setFirstName(e.target.value);
     if (e.target.name === "displayName") setDisplayName(e.target.value);
     if (e.target.name === "password") setPassword(e.target.value);
   };
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     e.preventDefault();
     setNewUserData({ firstName, lastName, displayName, email, password });
     console.log(newUserData);

@@ -13,9 +13,11 @@ const NewCoSignUp = props => {
   const [exCompanyError, setExCompanyError] = useState(false);
   const [email, setEmail] = useState(props.location.state);
   const [firstName, setFirstName] = useState("");
+  const [lasName, setLastName] = useState("");
 
   console.log("this is email state", email);
   console.log("this is first name", firstName);
+  console.log("Company Name", companyName);
 
   console.log("this is props", props.location.state);
 
@@ -25,9 +27,14 @@ const NewCoSignUp = props => {
     setCompanyName(value);
   });
 
-  const handleChange = event => {
-    setValue(event.target.value);
+  const handleChange = e => {
+    setValue(e.target.value);
     setExCompanyError(false);
+    if (e.target.name === "lastName") setLastName(e.target.value);
+    if (e.target.name === "firstName") setFirstName(e.target.value);
+    if (e.target.name === "displayName") setDisplayName(e.target.value);
+    if (e.target.name === "password") setPassword(e.target.value);
+    if (e.target.name === "businessName") setBusinessName(e.target.value);
   };
 
   const handleClick = e => {
